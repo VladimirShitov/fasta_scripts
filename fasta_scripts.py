@@ -1,10 +1,10 @@
 def fa2str(fa):
-'''Cuts fasta header and returns string with sequence'''
+	'''Cuts fasta header and returns string with sequence'''
 	return ''.join(fa.split('\n')[1:])
 	
 
 def fa2dict(fa):
-'''Returns dictionary, in which key is the fasta header and value is the sequence. Works with multiple sequences'''
+	'''Returns dictionary, in which key is the fasta header and value is the sequence. Works with multiple sequences'''
 	fa = fa.split('>')
 	d = {}
 	for s in fa:
@@ -14,7 +14,7 @@ def fa2dict(fa):
 
 
 def find_motif_in_dict(d, pattern):
-'''Finds given pattern in sequences from dictionary. Prints header (from key in the dictionary) and all the found patterns with their positions.
+	'''Finds given pattern in sequences from dictionary. Prints header (from key in the dictionary) and all the found patterns with their positions.
 Options:
 d : dictionary, in which keys are fasta headers or some IDs, and values are sequences
 pattern : a string or regular expression to find in a dictionary'''
@@ -28,7 +28,7 @@ pattern : a string or regular expression to find in a dictionary'''
 
 
 def split_phobius_op(s):
-'''Splits Phobius short output, so it is easy to copy transmembrane regions'''
+	'''Splits Phobius short output, so it is easy to copy transmembrane regions'''
 	s = [x.split('o') for x in s.split('i')]
 	res = []
 	for x in s:
@@ -41,7 +41,7 @@ def split_phobius_op(s):
 
 
 def parse_phobius(op, print_names = True):
-'''Parses Phobius output and prints transmembrane regions for every row'''
+	'''Parses Phobius output and prints transmembrane regions for every row'''
 	op = op.split('\n')[1:]
 	for row in op:
 		space = row.find(' ')
