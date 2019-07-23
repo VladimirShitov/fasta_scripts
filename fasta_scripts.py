@@ -7,9 +7,10 @@ def fa2dict(fa):
 	'''Returns dictionary, in which key is the fasta header and value is the sequence. Works with multiple sequences'''
 	fa = fa.split('>')
 	d = {}
-	for s in fa:
-		l = s.split('\n')
-		d[l[0]] = ''.join(l[1:])
+	for seq in fa:
+		lines = seq.split('\n')
+		if lines[0] != '':
+			d[lines[0]] = ''.join(lines[1:])
 	return d
 
 
