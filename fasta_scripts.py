@@ -1,10 +1,10 @@
 def fa2str(fa):
-	'''Cuts fasta header and returns string with sequence'''
+	'''Cut fasta header and return string with sequence'''
 	return ''.join(fa.split('\n')[1:])
 	
 
 def fa2dict(fa):
-	'''Returns dictionary, in which key is the fasta header and value is the sequence. Works with multiple sequences'''
+	'''Return dictionary, in which key is the fasta header and value is the sequence. Works with multiple sequences'''
 	fa = fa.split('>')
 	d = {}
 	for seq in fa:
@@ -15,10 +15,11 @@ def fa2dict(fa):
 
 
 def find_motif_in_dict(d, pattern):
-	'''Finds given pattern in sequences from dictionary. Prints header (from key in the dictionary) and all the found patterns with their positions.
-Options:
-d : dictionary, in which keys are fasta headers or some IDs, and values are sequences
-pattern : a string or regular expression to find in a dictionary'''
+	'''Find given pattern in sequences from dictionary. Print header (from key in the dictionary) and all the found patterns with their positions.
+	Parameters
+	----------
+	d : dictionary, in which keys are fasta headers or some IDs, and values are sequences
+	pattern : a string or regular expression to find in a dictionary'''
 	import re
 	for key in d:
 		print(key)
@@ -28,8 +29,8 @@ pattern : a string or regular expression to find in a dictionary'''
 		print('\n')
 
 
-def split_phobius_op(s):
-	'''Splits Phobius short output, so it is easy to copy transmembrane regions'''
+def split_phobius_output(s):
+	'''Split Phobius short output, so it is easy to copy transmembrane regions'''
 	s = [x.split('o') for x in s.split('i')]
 	res = []
 	for x in s:
@@ -42,7 +43,7 @@ def split_phobius_op(s):
 
 
 def parse_phobius(op, print_names = True):
-	'''Parses Phobius output and prints transmembrane regions for every row'''
+	'''Parse Phobius output and print transmembrane regions for every row'''
 	op = op.split('\n')[1:]
 	for row in op:
 		space = row.find(' ')
@@ -52,6 +53,7 @@ def parse_phobius(op, print_names = True):
 		if sep == -1:
 			sep = row.find(' Y ')
 		split_phobius_op(row[sep+3:])
+		
 
 def get_gene_info(gene_id, organism, email):
 	"""
